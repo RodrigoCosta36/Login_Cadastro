@@ -16,9 +16,8 @@ function entar() {
     var login = document.getElementById('user').value;
     var senha = document.getElementById('password').value;
 
-    if (login == 'root' || '000997' && senha == 'root') {
+    if (login == 'root' && senha == 'root') {
         alert('Logado Com Sucesso !!');
-        location.href = "https://supernintendo-rodrigo.netlify.app";
     } else {
         alert('Usuário ou Senha Inválido, Preencha os Campos.');
     }
