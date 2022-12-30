@@ -16,8 +16,16 @@ function entar() {
     var login = document.getElementById('user').value;
     var senha = document.getElementById('password').value;
 
-    if (login == 'root' && senha == 'root') {
+    if (login == 'RODRIGO.COSTA' && senha == 'rodrigo') {
         alert('Logado Com Sucesso !!');
+        location.href = "https://supernintendo-rodrigo.netlify.app";
+    } else {
+        alert('Usuário ou Senha Inválido, Preencha os Campos.');
+    }
+
+    if (login == 'DAVI.CASTRO' && senha == '007007') {
+        alert('Logado Com Sucesso !!');
+        location.href = "https://supernintendo-rodrigo.netlify.app";
     } else {
         alert('Usuário ou Senha Inválido, Preencha os Campos.');
     }
