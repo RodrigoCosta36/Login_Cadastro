@@ -13,17 +13,10 @@ function showHide() {
 }
 
 function entar() {
-    var login = document.getElementById('user').value;
-    var senha = document.getElementById('password').value;
+    const login = document.getElementById('user').value;
+    const senha = document.getElementById('password').value;
 
     if (login == 'RODRIGO.COSTA' && senha == 'rodrigo') {
-        alert('Logado Com Sucesso !!');
-        location.href = "https://supernintendo-rodrigo.netlify.app";
-    } else {
-        alert('Usuário ou Senha Inválido, Preencha os Campos.');
-    }
-
-    if (login == 'DAVI.CASTRO' && senha == '007007') {
         alert('Logado Com Sucesso !!');
         location.href = "https://supernintendo-rodrigo.netlify.app";
     } else {
