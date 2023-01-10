@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Rodrigo Costa" />
+    <title>Contagem</title>
+    <link rel="shortcut icon" href="_icon/calculator-solid.svg" type="image/png" />
+    <!-- Font Awesome icons (free version)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.2.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Import AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <p>
+            <h1>PROCESSO DE CONFERÊNCIA</h1>
+            </p>
+            <section>
+                <!--   <div class="border_box">
+                    <label class="nomeQR" for="codBarra">QR Code:</label><span><i class="bi bi-qr-code-scan"></i></span>
+                    <input class="qrCode qr_qr" type="text" name="qrCode" id="qrCode" placeholder="" autocomplete="off"
+                        maxlength="">
+                    <label for="codBarra"></label>
+                    <input class="qrCode1 qr_qr" type="text" name="qrCode1" id="qrCode1" placeholder=""
+                        autocomplete="off" onchange="readQR()" maxlength="">
+                </div>
+                <br>
+                    -->
+
+                <div class="descripition border_box">
+                    <label class="nomeQR" for="codBarraPrimary">Código de Barra:</label><span><i
+                            class="bi bi-upc-scan"></i></span>
+                    <input class="barras" type="text" name="codBarraPrimary" id="codBarraPrimary" autocomplete="off"
+                        onchange="retorno()"><br><br>
+                    <div>
+                        <label class="nomeQR" for="referencia">Referência:</label>
+                        <span type="text" name="referencia" id="referencia"></span>
+                        <br><br>
+                        <label class="nomeQR" for="descricao">Descrição:</label>
+                        <span type="text" name="descricao" id="descricao"></span>
+                    </div>
+                    <br>
+                    <button id="produtos" class="btn btn-light" onclick="produtos.salvar()">Salvar</button>
+                    <label for="number" class="btn btn-light leftEsq">Nº Baú :</label>
+                    <input type="text" class="left btn btn-light" name="number" id="number">
+                </div>
+                <br>
+                <div class="border_box sub_container">
+                    <div>
+                        <label class="nomeQR" for="codBarra">Código de Barra:</label>
+                        <br>
+                        <input class="test barra" type="text" name="codBarra" id="codBarra" placeholder=""
+                            autocomplete="off" onchange="checked()">
+                    </div>
+                    <div>
+                        <p id="contador"></p>
+                        <button id="diminuir" class="btn btn-warning">Excluir</button>
+                        <button id="limpar" class="btn btn-danger">Limpar</button>
+                    </div>
+                </div>
+            </section>
+
+            <audio src="_sound/bipErro.mp3" id="audio" controls hidden="none">
+                <source src="" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <table>
+            <thead>
+                <th class="center">Nº Baú</th>
+                <th class="center">SKU</th>
+                <th class="center">QTD</th>
+                <th class="center">DESCRIÇÃO</th>
+                <th class="center icones">AÇÕES</th>
+            </thead>
+            <tbody class="tbody" id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
