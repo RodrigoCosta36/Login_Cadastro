@@ -3,7 +3,7 @@ let senhas = []
 
 usuarios.push("RODRIGO.COSTA", "GABRIEL.LUCAS", "LILIANE", "BAIANO");
 
-senhas.push("1234569");
+senhas.push("123456");
 senhas.push("123456");
 senhas.push("123456");
 senhas.push("123456");
@@ -34,7 +34,7 @@ function entar() {
     }
     if (logado == 1) {
         //alert("Logado");
-        location.href = "https://conferenciapa.netlify.app";
+        location.href = "./conferencia.html";
     } else {
         alert('Campo usuário ou senha incoreto.');
     }
