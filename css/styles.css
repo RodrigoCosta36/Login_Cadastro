@@ -54,7 +54,7 @@ form input {
     position: relative;
     left: 220px;
     bottom: 26px;
-    background: url("_img/eyesHide.png");
+    background: url("/_img/eyesHide.png");
     background-size: cover;
     width: 25px;
     height: 25px;
@@ -63,7 +63,7 @@ form input {
 }
 
 #icon.hide {
-    background: url("_img/eyesShow.png");
+    background: url("/_img/eyesShow.png");
     background-size: cover;
 }
 
