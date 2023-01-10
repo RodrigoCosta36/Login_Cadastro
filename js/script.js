@@ -3,7 +3,7 @@ let senhas = []
 
 usuarios.push("RODRIGO.COSTA", "GABRIEL.LUCAS", "LILIANE", "BAIANO");
 
-senhas.push("123456");
+senhas.push("hope23*");
 senhas.push("123456");
 senhas.push("123456");
 senhas.push("123456");
