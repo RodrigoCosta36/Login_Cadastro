@@ -1,12 +1,12 @@
 let usuarios = []
 let senhas = []
 
-usuarios.push("Rafael", "Rodrigo", "Daia", "Kauan");
+usuarios.push("RODRIGO.COSTA", "GABRIEL.LUCAS", "LILIANE", "BAIANO");
 
+senhas.push("1234569");
 senhas.push("123456");
-senhas.push("1234567");
-senhas.push("12345678");
-senhas.push("123456789");
+senhas.push("123456");
+senhas.push("123456");
 
 function showHide() {
     const password = document.getElementById('password');
@@ -33,9 +33,9 @@ function entar() {
         }
     }
     if (logado == 1) {
-        alert("Logado");
-        location.href = "https://supernintendo-rodrigo.netlify.app";
+        //alert("Logado");
+        location.href = "https://conferenciapa.netlify.app";
     } else {
-        console.log('Invalido !!');
+        alert('Campo usuário ou senha incoreto.');
     }
 }
