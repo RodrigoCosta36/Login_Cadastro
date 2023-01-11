@@ -8,7 +8,7 @@ const limpar = document.getElementById('limpar');
 const qrcoder = document.getElementById('qrCode');
 const qrcoder1 = document.getElementById('qrCode1');
 
-//document.getElementById('qrCode').focus();
+document.getElementById('codBarraPrimary').focus();
 document.getElementById('codBarra').onchange = function () {
     checked();
 };
@@ -68,7 +68,7 @@ function retorno() {
             info.infos.map((peca) => {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
-                    descricao.innerHTML = peca.informacao;
+                    descricao.innerHTML = peca.descricao;
                 }
             })
         })
@@ -104,6 +104,8 @@ class Produto {
         number.value = "";
         //qrcoder.value = "";
         // qrcoder1.value = "";
+
+        document.getElementById('codBarraPrimary').focus();
     };
 
     listaTabela() {
