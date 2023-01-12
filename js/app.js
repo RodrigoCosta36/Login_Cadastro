@@ -183,17 +183,6 @@ document.getElementById('exportCSV').addEventListener('click', function () {
     table2excel.export(document.getElementById('export'))
 });
 
-
-
-
-
-
-
-
-
-
-
-
 // const tableRows = document.querySelectorAll('tr');
 // const exportBtn = document.querySelector('[data-js="export-table-btn"]');
 
