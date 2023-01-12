@@ -178,29 +178,44 @@ class Produto {
 
 var produtos = new Produto();
 
+document.getElementById('exportCSV').addEventListener('click', function () {
+    var table2excel = new Table2Excel();
+    table2excel.export(document.getElementById('export'))
+});
 
-const tableRows = document.querySelectorAll('tr');
-const exportBtn = document.querySelector('[data-js="export-table-btn"]');
 
-const getCellsText = ({ textContent }) => textContent
 
-const getStringWithCommas = ({ cells }) => Array.from(cells)
-    .map(getCellsText)
-    .join(',')
 
-const createCSVString = () => Array.from(tableRows)
-    .map(getStringWithCommas)
-    .join('\n')
 
-const setCSVDownload = CSVString => {
-    const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent()}`
-    exportBtn.setAttribute('href', CSVURI)
-    exportBtn.setAttribute('download', 'relatorio.csv')
-}
 
-const exportTable = () => {
-    const CSVString = createCSVString()
-    setCSVDownload(CSVString)
-}
 
-exportBtn.addEventListener('click', exportTable)
+
+
+
+
+
+// const tableRows = document.querySelectorAll('tr');
+// const exportBtn = document.querySelector('[data-js="export-table-btn"]');
+
+// const getCellsText = ({ textContent }) => textContent
+
+// const getStringWithCommas = ({ cells }) => Array.from(cells)
+//     .map(getCellsText)
+//     .join(',')
+
+// const createCSVString = () => Array.from(tableRows)
+//     .map(getStringWithCommas)
+//     .join('\n')
+
+// const setCSVDownload = CSVString => {
+//     const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent()}`
+//     exportBtn.setAttribute('href', CSVURI)
+//     exportBtn.setAttribute('download', 'relatorio.csv')
+// }
+
+// const exportTable = () => {
+//     const CSVString = createCSVString()
+//     setCSVDownload(CSVString)
+// }
+
+// exportBtn.addEventListener('click', exportTable)
