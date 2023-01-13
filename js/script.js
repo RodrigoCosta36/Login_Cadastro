@@ -27,15 +27,38 @@ function entar() {
     const senha = document.getElementById('password').value;
     var logado = 0;
 
-    for (let i = 0; i < usuarios.length; i++) {
-        if (login == usuarios[i] && senha == senhas[i]) {
-            logado = 1;
-        }
-    }
-    if (logado == 1) {
-        //alert("Logado");
-        location.href = "./conferencia.html";
-    } else {
-        alert('Campo usuário ou senha incoreto.');
-    }
-}
+    fetch("usuarios.json").then((response) => {
+        response.json().then((usuario) => {
+            usuario.users.map((pass) => {
+                if (login == pass.usuario && senha == pass.senha) {
+                    logado = 1;
+                    console.log('Teste'); {
+                        if (logado == 1) {
+                            console.log('loguei')
+                        } else {
+                            console.log('Usuario ou Senha Inválido.')
+                        }
+                    }
+                }
+            })
+        })
+    })
+};
+
+// function entar() {
+//     const login = document.getElementById('user').value;
+//     const senha = document.getElementById('password').value;
+//     var logado = 0;
+
+//     for (let i = 0; i < usuarios.length; i++) {
+//         if (login == usuarios[i] && senha == senhas[i]) {
+//             logado = 1;
+//         }
+//     }
+//     if (logado == 1) {
+//         //alert("Logado");
+//         location.href = "./conferencia.html";
+//     } else {
+//         alert('Campo usuário ou senha incoreto.');
+//     }
+// };

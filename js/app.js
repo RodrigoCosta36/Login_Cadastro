@@ -8,7 +8,7 @@ const limpar = document.getElementById('limpar');
 const qrcoder = document.getElementById('qrCode');
 const qrcoder1 = document.getElementById('qrCode1');
 
-document.getElementById('codBarraPrimary').focus();
+document.getElementById('number').focus();
 document.getElementById('codBarra').onchange = function () {
     checked();
 };
@@ -32,6 +32,7 @@ limpar.addEventListener('click', function () {
         // qrcoder1.value = "";
         codigoBarra.value = "";
         codigos.value = "";
+        document.getElementById('number').focus();
     }
 });
 
@@ -73,10 +74,10 @@ function retorno() {
             })
         })
     })
-    document.getElementById('number').focus();
+    document.getElementById('codBarra').focus();
 };
 function enter() {
-    document.getElementById('codBarra').focus();
+    document.getElementById('codBarraPrimary').focus();
 };
 
 class Produto {
@@ -105,7 +106,7 @@ class Produto {
         //qrcoder.value = "";
         // qrcoder1.value = "";
 
-        document.getElementById('codBarraPrimary').focus();
+        document.getElementById('number').focus();
     };
 
     listaTabela() {
@@ -182,29 +183,3 @@ document.getElementById('exportCSV').addEventListener('click', function () {
     var table2excel = new Table2Excel();
     table2excel.export(document.getElementById('export'))
 });
-
-// const tableRows = document.querySelectorAll('tr');
-// const exportBtn = document.querySelector('[data-js="export-table-btn"]');
-
-// const getCellsText = ({ textContent }) => textContent
-
-// const getStringWithCommas = ({ cells }) => Array.from(cells)
-//     .map(getCellsText)
-//     .join(',')
-
-// const createCSVString = () => Array.from(tableRows)
-//     .map(getStringWithCommas)
-//     .join('\n')
-
-// const setCSVDownload = CSVString => {
-//     const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent()}`
-//     exportBtn.setAttribute('href', CSVURI)
-//     exportBtn.setAttribute('download', 'relatorio.csv')
-// }
-
-// const exportTable = () => {
-//     const CSVString = createCSVString()
-//     setCSVDownload(CSVString)
-// }
-
-// exportBtn.addEventListener('click', exportTable)

@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "usuario": "RODRIGO.COSTA",
+            "senha": "hope23*"
+        },
+        {
+            "usuario": "GLAUBER.ALMEIDA",
+            "senha": "hope24*"
+        },
+        {
+            "usuario": "TENA",
+            "senha": "hope25*"
+        },
+        {
+            "usuario": "ALMEIDA",
+            "senha": "hope26*"
+        },
+        {
+            "usuario": "COSTA",
+            "senha": "hope27*"
+        },
+        {
+            "usuario": "LOPES",
+            "senha": "hope2*"
+        }
+    ]
+}
