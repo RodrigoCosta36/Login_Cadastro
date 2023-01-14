@@ -64,7 +64,7 @@ const descricao = document.getElementById('descricao');
 
 
 function retorno() {
-    fetch("info.json").then((response) => {
+    fetch("/json/info.json").then((response) => {
         response.json().then((info) => {
             info.infos.map((peca) => {
                 if (codigoBarra.value == peca.codBarras) {

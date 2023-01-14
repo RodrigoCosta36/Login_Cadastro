@@ -17,7 +17,7 @@ function entar() {
     const senha = document.getElementById('password').value;
     var logado = false;
 
-    fetch("usuarios.json").then((response) => {
+    fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
             usuario.users.map((pass) => {
 
