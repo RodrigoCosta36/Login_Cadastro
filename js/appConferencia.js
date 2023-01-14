@@ -183,3 +183,15 @@ document.getElementById('exportCSV').addEventListener('click', function () {
     var table2excel = new Table2Excel();
     table2excel.export(document.getElementById('export'))
 });
+
+document.querySelector('*' && 'body').setAttribute("class", 'azul');
+
+document.getElementById('verde-btn').addEventListener('click', function () {
+    document.querySelector('*' && 'body').setAttribute("class", "verde");
+});
+document.getElementById('azul-btn').addEventListener('click', function () {
+    document.querySelector('*' && 'body').setAttribute("class", "azul");
+});
+document.getElementById('amd-btn').addEventListener('click', function () {
+    document.querySelector('*' && 'body').setAttribute("class", "amd");
+});
