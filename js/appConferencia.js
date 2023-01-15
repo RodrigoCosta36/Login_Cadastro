@@ -7,10 +7,22 @@ const diminuir = document.getElementById('diminuir');
 const limpar = document.getElementById('limpar');
 const qrcoder = document.getElementById('qrCode');
 const qrcoder1 = document.getElementById('qrCode1');
+const referencia = document.getElementById('referencia');
+const descricao = document.getElementById('descricao');
 
 document.getElementById('number').focus();
 document.getElementById('codBarra').onchange = function () {
     checked();
+};
+
+if (localStorage.getItem('token') == null) {
+    alert('Login Obrigatório.');
+    window.location.href = '/index.html';
+}
+
+function sair() {
+    localStorage.removeItem('token');
+    window.location.href = '/index.html';
 };
 
 diminuir.addEventListener('click', function () {
@@ -57,11 +69,6 @@ function checked() {
         x.play();
     }
 };
-
-
-const referencia = document.getElementById('referencia');
-const descricao = document.getElementById('descricao');
-
 
 function retorno() {
     fetch("/json/info.json").then((response) => {

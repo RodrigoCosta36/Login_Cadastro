@@ -12,7 +12,7 @@ function showHide() {
     }
 }
 
-function entar() {
+function entrar() {
     const login = document.getElementById('user').value;
     const senha = document.getElementById('password').value;
     var logado = false;
@@ -28,7 +28,9 @@ function entar() {
                 }
             })
             if (logado == true) {
-                location.href = "./conferencia.html";
+                window.location.href = "./conferencia.html";
+                let token = Math.random().toString(32).substr(2);
+                localStorage.setItem('token', token);
             } else {
                 alert('Campo usuário ou senha incoreto.');
             }
