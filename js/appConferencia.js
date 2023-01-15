@@ -17,12 +17,12 @@ document.getElementById('codBarra').onchange = function () {
 
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
-    window.location.href = '/index.html';
+    window.location.href = 'https://conferenciapa.netlify.app/';
 }
 
 function sair() {
     localStorage.removeItem('token');
-    window.location.href = '/index.html';
+    window.location.href = 'https://conferenciapa.netlify.app/';
 };
 
 diminuir.addEventListener('click', function () {
