@@ -22,9 +22,6 @@ function entrar() {
         nome: ''
     };
 
-    // lista = JSON.parse(localStorage.getItem('usuarioLogado'));
-    // console.log(lista);
-
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
             usuario.map((pass) => {
@@ -32,6 +29,9 @@ function entrar() {
                 for (let i = 0; i < usuario.length; i++) {
                     if (login == pass.usuario && senha == pass.senha) {
                         logado = true;
+                        usuarioValidado = {
+                            nome: pass.usuario
+                        }
                     }
                 }
             })
@@ -46,3 +46,5 @@ function entrar() {
         })
     })
 };
+
+console.log(usuarioValidado);
