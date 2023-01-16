@@ -31,7 +31,6 @@ function entrar() {
                 //window.location.href = "https://conferenciapa.netlify.app/conferencia.html";
                 let token = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
                 localStorage.setItem('token', token);
-                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
             } else {
                 alert('Campo usuário ou senha incoreto.');
             }
