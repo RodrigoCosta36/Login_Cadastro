@@ -17,13 +17,6 @@ function entrar() {
     const senha = document.getElementById('password').value;
     var logado = false;
 
-    let lista = [];
-    let usuarioValidado = {
-        nome: ''
-    };
-
-    lista = JSON.parse(localStorage.getItem('usuarioLogado'))
-
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
             usuario.map((pass) => {
@@ -39,10 +32,6 @@ function entrar() {
                 let token = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
                 localStorage.setItem('token', token);
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-
-                usuarioValidado = {
-                    nome: pass.usuario
-                }
             } else {
                 alert('Campo usuário ou senha incoreto.');
             }
