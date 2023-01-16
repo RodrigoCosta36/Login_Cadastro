@@ -45,6 +45,6 @@ function entrar() {
             }
         })
     })
+    console.log(usuarioValidado);
 };
 
-console.log(usuarioValidado);
