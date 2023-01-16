@@ -39,7 +39,7 @@ function entrar() {
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
 
                 usuarioValidado = {
-                    nome: login
+                    nome: login.value
                 }
             } else {
                 alert('Campo usuário ou senha incoreto.');
