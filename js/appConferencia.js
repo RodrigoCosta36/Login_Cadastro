@@ -15,10 +15,10 @@ document.getElementById('codBarra').onchange = function () {
     checked();
 };
 
-let userLogado = JSON.parse(localStorage.getItem(userLogado))
-let logado = document.getElementById('userLogado');
+// let userLogado = JSON.parse(localStorage.getItem(userLogado))
+// let logado = document.getElementById('userLogado');
 
-logado.innerHTML = userLogado.usuario.users
+// logado.innerHTML = userLogado.usuario.users
 
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
