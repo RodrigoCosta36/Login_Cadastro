@@ -10,12 +10,20 @@ function showHide() {
         password.setAttribute('type', 'password');
         icon.classList.remove('hide')
     }
-}
+};
 
 function entrar() {
     const login = document.getElementById('user').value;
     const senha = document.getElementById('password').value;
     var logado = false;
+
+    let lista = [];
+    let usuarioValidado = {
+        nome: ''
+    };
+
+    lista = JSON.parse(localStorage.getItem('usuarioLogado'));
+    console.log(lista);
 
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
