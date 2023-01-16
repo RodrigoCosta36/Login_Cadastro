@@ -15,6 +15,11 @@ document.getElementById('codBarra').onchange = function () {
     checked();
 };
 
+let userLogado = JSON.parse(localStorage.getItem(userLogado))
+let logado = document.getElementById('userLogado');
+
+logado.innerHTML = userLogado.usuario.users
+
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
     window.location.href = 'https://conferenciapa.netlify.app/';
