@@ -19,9 +19,9 @@ function entrar() {
 
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
-            usuario.users.map((pass) => {
+            usuario.map((pass) => {
 
-                for (let i = 0; i < usuario.users.length; i++) {
+                for (let i = 0; i < usuario.length; i++) {
                     if (login == pass.usuario && senha == pass.senha) {
                         logado = true;
                     }

@@ -1,16 +1,14 @@
-{
-    "users": [
-        {
-            "usuario": "RODRIGO.COSTA",
-            "senha": "hope23*"
-        },
-        {
-            "usuario": "GLAUBER.ALMEIDA",
-            "senha": "hope23*"
-        },
-        {
-            "usuario": "STENIO.LOPES",
-            "senha": "hope23*"
-        }
-    ]
-}
+[
+    {
+        "usuario": "RODRIGO.COSTA",
+        "senha": "hope23*"
+    },
+    {
+        "usuario": "GLAUBER.ALMEIDA",
+        "senha": "hope23*"
+    },
+    {
+        "usuario": "STENIO.LOPES",
+        "senha": "hope23*"
+    }
+]
