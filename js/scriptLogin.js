@@ -39,6 +39,6 @@ function entrar() {
             }
         })
     })
-    console.log(usuarioValidado);
+    console.log(userValid);
 };
 
