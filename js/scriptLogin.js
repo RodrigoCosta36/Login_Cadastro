@@ -22,6 +22,8 @@ function entrar() {
         nome: ''
     };
 
+    lista = JSON.parse(localStorage.getItem('usuarioLogado'))
+
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
             usuario.map((pass) => {
@@ -39,7 +41,7 @@ function entrar() {
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
 
                 usuarioValidado = {
-                    nome: item.usuario
+                    nome: pass.usuario
                 }
             } else {
                 alert('Campo usuário ou senha incoreto.');
