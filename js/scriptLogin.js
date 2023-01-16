@@ -29,9 +29,6 @@ function entrar() {
                 for (let i = 0; i < usuario.length; i++) {
                     if (login == pass.usuario && senha == pass.senha) {
                         logado = true;
-                        usuarioValidado = {
-                            nome: pass.usuario
-                        }
                     }
                 }
             })
@@ -40,6 +37,10 @@ function entrar() {
                 let token = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
                 localStorage.setItem('token', token);
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+                usuarioValidado = {
+                    nome: pass.usuario
+                }
             } else {
                 alert('Campo usuário ou senha incoreto.');
             }
