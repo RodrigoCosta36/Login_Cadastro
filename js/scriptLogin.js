@@ -22,8 +22,8 @@ function entrar() {
         nome: ''
     };
 
-    lista = JSON.parse(localStorage.getItem('usuarioLogado'));
-    console.log(lista);
+    // lista = JSON.parse(localStorage.getItem('usuarioLogado'));
+    // console.log(lista);
 
     fetch("./json/usuarios.json").then((response) => {
         response.json().then((usuario) => {
