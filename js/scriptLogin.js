@@ -39,6 +39,4 @@ function entrar() {
             }
         })
     })
-    console.log(userValid);
 };
-
