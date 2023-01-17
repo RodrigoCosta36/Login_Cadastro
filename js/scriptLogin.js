@@ -34,6 +34,7 @@ function entrar() {
                 let token = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
                 localStorage.setItem('token', token);
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                localStorage.setItem('usuarios', login);
             } else {
                 alert('Campo usuário ou senha incoreto.');
             }

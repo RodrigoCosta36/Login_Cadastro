@@ -15,6 +15,11 @@ document.getElementById('codBarra').onchange = function () {
     checked();
 };
 
+let usuarios = localStorage.getItem('usuarios');
+let nomeLogado = document.getElementById('nomeUser');
+
+nomeLogado.innerHTML = `Olá, ${usuarios}`
+
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
     window.location.href = 'https://conferenciapa.netlify.app/';
@@ -23,6 +28,7 @@ if (localStorage.getItem('token') == null) {
 function sair() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('usuarios');
     window.location.href = 'https://conferenciapa.netlify.app/';
 };
 
