@@ -53,11 +53,9 @@ limpar.addEventListener('click', function () {
 
 function checked() {
     if (codigos.value == codigoBarra.value) {
-        // console.log('Ok.!');
         contador.innerHTML = ++contagem;
         codigos.value = codigos.value = "";
     } else {
-        //alert('Erro ao Ler CÓDIGOS_DE_BARRAS.');
         let x = document.getElementById('audio');
         x.play();
     }
