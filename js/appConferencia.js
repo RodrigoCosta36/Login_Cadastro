@@ -5,8 +5,6 @@ const codigoBarra = document.getElementById('codBarraPrimary');
 const codigos = document.getElementById('codBarra');
 const diminuir = document.getElementById('diminuir');
 const limpar = document.getElementById('limpar');
-const qrcoder = document.getElementById('qrCode');
-const qrcoder1 = document.getElementById('qrCode1');
 const referencia = document.getElementById('referencia');
 const descricao = document.getElementById('descricao');
 
@@ -47,23 +45,11 @@ limpar.addEventListener('click', function () {
         referencia.innerHTML = contagem = "";
         descricao.innerHTML = contagem = "";
         number.value = "";
-        //qrcoder.value = "";
-        // qrcoder1.value = "";
         codigoBarra.value = "";
         codigos.value = "";
         document.getElementById('number').focus();
     }
 });
-
-// function readQR() {
-//     if (qrcoder1.value == qrcoder.value) {
-//         console.log('Ok.!');
-//     } else {
-//         alert('Erro ao Ler QR_CODE.');
-//         let x = document.getElementById('audio');
-//         x.play();
-//     }
-// };
 
 function checked() {
     if (codigos.value == codigoBarra.value) {
@@ -84,6 +70,7 @@ function retorno() {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
+                    contador.innerHTML = ++contagem;
                 }
             })
         })
@@ -109,16 +96,12 @@ class Produto {
         };
 
         this.listaTabela();
-
-        //console.log(produtos);
         codigoBarra.value = "";
         codigos.value = "";
         contador.innerHTML = contagem = 0;
         referencia.innerHTML = contagem = "";
         descricao.innerHTML = contagem = "";
         number.value = "";
-        //qrcoder.value = "";
-        // qrcoder1.value = "";
 
         document.getElementById('number').focus();
     };
