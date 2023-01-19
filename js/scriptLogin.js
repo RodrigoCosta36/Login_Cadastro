@@ -36,7 +36,7 @@ function entrar() {
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
                 localStorage.setItem('usuarios', login);
             } else {
-                alert('Campo usuário ou senha incoreto.');
+                alert('Campo usuário ou senha incorreto.');
             }
         })
     })
