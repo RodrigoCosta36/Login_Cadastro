@@ -49,24 +49,6 @@ form input {
     height: 30em;
 }
 
-#icon {
-    display: flex;
-    position: relative;
-    left: 220px;
-    bottom: 26px;
-    background: url("/_img/eyesHide.png");
-    background-size: cover;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-
-}
-
-#icon.hide {
-    background: url("/_img/eyesShow.png");
-    background-size: cover;
-}
-
 #login {
     transition: 0.5s;
 }
