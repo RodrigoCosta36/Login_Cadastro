@@ -179,7 +179,7 @@ document.getElementById('exportCSV').addEventListener('click', function () {
     table2excel.export(document.getElementById('export'))
 });
 
-document.querySelector('*' && 'body').setAttribute("class", 'azul');
+document.querySelector('*' && 'body').setAttribute("class", 'amd');
 
 document.getElementById('verde-btn').addEventListener('click', function () {
     document.querySelector('*' && 'body').setAttribute("class", "verde");
