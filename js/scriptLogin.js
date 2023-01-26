@@ -41,10 +41,3 @@ function entrar() {
         })
     })
 };
-
-function pick() {
-    location.href = "https://conferenciapa.netlify.app/sobras.html";
-};
-function conferencia() {
-    location.href = "https://conferenciapa.netlify.app/conferencia.html";
-};

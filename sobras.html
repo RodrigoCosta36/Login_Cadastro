@@ -27,19 +27,26 @@
 </head>
 
 <body>
+    <nav class="navbar bg-dark" data-bs-theme="dark">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="./home.html"><i class="bi bi-house"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./conferencia.html"><i class="bi bi-qr-code-scan"></i> Endereço de Picking</a>
+            </li>
+        </ul>
+        <li class="usuarioLogout">
+            <div id="nomeUser"></div>
+        </li>
+        <li class="usuarioLogout">
+            <button onclick="sair()" class="btn btn-light">Desconectar</button>
+        </li>
+    </nav>
     <div class="container">
         <div>
             <p>
             <h1>Endereço de Picking</h1>
-            <div class="usuarioLogout">
-                <div id="temas">
-                    <button id="amd-btn" value="amd" class="amd" hidden=>clique</button>
-                </div>
-                <div>
-                    <p id="nomeUser"></p>
-                    <button onclick="sair()" class="btn btn-light">Desconectar</button>
-                </div>
-            </div>
             </p>
             <section>
                 <div class="descripition border_box">
