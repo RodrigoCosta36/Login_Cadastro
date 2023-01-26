@@ -30,7 +30,7 @@ function entrar() {
                 }
             })
             if (logado == true) {
-                window.location.href = "https://conferenciapa.netlify.app/conferencia.html";
+                window.location.href = "./home.html";
                 let token = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
                 localStorage.setItem('token', token);
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
@@ -40,4 +40,11 @@ function entrar() {
             }
         })
     })
+};
+
+function pick() {
+    location.href = "./sobras.html";
+};
+function conferencia() {
+    location.href = "./conferencia.html";
 };
