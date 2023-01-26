@@ -12,7 +12,11 @@
 
 <body class="container">
     <div class="header">
-        <h1>O que deseja Fazer ?</h1><br><br><br>
+        <div>
+            <p id="nomeUser"></p>
+            <button onclick="sair()" class="btn btn-light">Sair</button>
+        </div>
+        <h1>Funções</h1><br><br><br>
         <form id="form">
             <input type="submit" id="login" value="Endereço de Picking" onclick="pick(); return false"><br><br><br>
             <input type="submit" id="login" value="Conferência de Produto Acabado"

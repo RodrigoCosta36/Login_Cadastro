@@ -12,10 +12,10 @@ let nomeLogado = document.getElementById('nomeUser');
 
 nomeLogado.innerHTML = `Olá, ${usuarios}`
 
-// if (localStorage.getItem('token') == null) {
-//     alert('Login Obrigatório.');
-//     window.location.href = 'https://conferenciapa.netlify.app/';
-// }
+if (localStorage.getItem('token') == null) {
+    alert('Login Obrigatório.');
+    window.location.href = 'https://conferenciapa.netlify.app/';
+}
 
 function sair() {
     localStorage.removeItem('token');

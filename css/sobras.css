@@ -4,16 +4,6 @@
     color: rgb(255, 255, 255);
 }
 
-button.verde {
-    border: 1.5px solid #000;
-    border-radius: 10em 0 0em 10em;
-}
-
-button.azul {
-    border: 1.5px solid #000;
-    border: 1.5px solid #000;
-}
-
 button.amd {
     border: 1.5px solid #000;
     border-radius: 0 10em 10em 0em;
