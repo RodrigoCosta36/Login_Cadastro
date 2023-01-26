@@ -32,3 +32,11 @@ function retorno() {
     })
 };
 document.querySelector('*' && 'body').setAttribute("class", 'amd');
+
+
+function pick() {
+    location.href = "https://conferenciapa.netlify.app/sobras.html";
+};
+function conferencia() {
+    location.href = "https://conferenciapa.netlify.app/conferencia.html";
+};
