@@ -4,21 +4,15 @@
     color: rgb(255, 255, 255);
 }
 
-button.amd {
-    border: 1.5px solid #000;
-    border-radius: 0 10em 10em 0em;
+body {
+    margin: 5%;
 }
 
-.verde {
-    background: rgb(9, 96, 78);
-    transition: all 0.5s ease-in-out;
-    color: transparent;
-}
-
-.azul {
-    background: rgb(35, 120, 181);
-    transition: all 0.5s ease-in-out;
-    color: transparent;
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font: normal 16pt Arial;
 }
 
 .amd {
