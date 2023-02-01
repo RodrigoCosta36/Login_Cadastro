@@ -40,11 +40,19 @@
         "senha": "hope23*"
     },
     {
-        "usuario": "VISITANTE 01",
+        "usuario": "VISITANTE01",
         "senha": "hope23*"
     },
     {
-        "usuario": "VISITANTE 02",
+        "usuario": "VISITANTE02",
+        "senha": "hope23*"
+    },
+    {
+        "usuario": "VISITANTE03",
+        "senha": "hope23*"
+    },
+    {
+        "usuario": "BRENDA.KESSIA",
         "senha": "hope23*"
     }
 ]

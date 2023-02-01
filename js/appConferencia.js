@@ -129,6 +129,7 @@ class Produto {
             td_sku.classList.add('center');
             td_qtde.classList.add('center');
             td_acoes.classList.add('center');
+            td_conferente.classList.add('center');
 
             let imgEdit = document.createElement('img');
             imgEdit.src = '_icon/editar.png';
