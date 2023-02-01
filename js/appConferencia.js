@@ -116,12 +116,14 @@ class Produto {
             let td_sku = tr.insertCell();
             let td_qtde = tr.insertCell();
             let td_descricao = tr.insertCell();
+            let td_conferente = tr.insertCell();
             let td_acoes = tr.insertCell();
 
             td_id.innerHTML = this.arrayProdutos[i].id;
             td_sku.innerHTML = this.arrayProdutos[i].referencia;
             td_qtde.innerHTML = this.arrayProdutos[i].contador;
             td_descricao.innerHTML = this.arrayProdutos[i].descricao;
+            td_conferente.innerHTML = `${usuarios}`;
 
             td_id.classList.add('center');
             td_sku.classList.add('center');
