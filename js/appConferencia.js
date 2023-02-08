@@ -38,6 +38,10 @@ diminuir.addEventListener('click', function () {
     }
 });
 
+adiciona.addEventListener('click', function () {
+    contador.innerHTML = ++contagem;
+});
+
 limpar.addEventListener('click', function () {
     var r = confirm("Clique em OK para limpar todos os campos!");
     if (r == true) {
@@ -58,6 +62,7 @@ function checked() {
     } else {
         let x = document.getElementById('audio');
         x.play();
+        codigos.value = "";
     }
 };
 
@@ -82,7 +87,7 @@ function enter() {
 class Produto {
 
     constructor() {
-        this.id = 1;
+        this.id = number.value;
         this.arrayProdutos = [];
     }
 
@@ -133,11 +138,13 @@ class Produto {
 
             let imgEdit = document.createElement('img');
             imgEdit.src = '_icon/editar.png';
+            imgEdit.setAttribute("onclick", "produtos.editar(" + JSON.stringify(this.arrayProdutos[i]) + ")");
 
             td_acoes.appendChild(imgEdit);
 
             let imgDelet = document.createElement('img');
             imgDelet.src = '_icon/excluir.png';
+            imgDelet.setAttribute("onclick", "produtos.deletar(" + this.arrayProdutos[i].id + ")");
 
             td_acoes.appendChild(imgDelet);
         }
@@ -149,6 +156,13 @@ class Produto {
         this.arrayProdutos.push(produtos);
         this.id++;
     };
+
+    editar(dados) {
+        document.getElementById('number').value = dados.id;
+        referencia.innerHTML = dados.referencia;
+        descricao.innerHTML = dados.descricao;
+        contador.innerHTML = dados.contador;
+    }
 
     lerDados() {
         let produtos = {}
@@ -173,6 +187,20 @@ class Produto {
         }
         return true;
     };
+
+    deletar(id) {
+        if (confirm(`Excluir o Baú Nº ${id} ?`)) {
+            let tbody = document.getElementById('tbody');
+
+            for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
+                if (this.arrayProdutos[i].id == id) {
+                    this.arrayProdutos.splice(i, 1);
+                    tbody.deleteRow(i);
+                }
+            };
+
+        };
+    };
 };
 
 var produtos = new Produto();
@@ -184,12 +212,12 @@ document.getElementById('exportCSV').addEventListener('click', function () {
 
 document.querySelector('*' && 'body').setAttribute("class", 'amd');
 
-document.getElementById('verde-btn').addEventListener('click', function () {
-    document.querySelector('*' && 'body').setAttribute("class", "verde");
-});
-document.getElementById('azul-btn').addEventListener('click', function () {
-    document.querySelector('*' && 'body').setAttribute("class", "azul");
-});
-document.getElementById('amd-btn').addEventListener('click', function () {
-    document.querySelector('*' && 'body').setAttribute("class", "amd");
-});
+// document.getElementById('verde-btn').addEventListener('click', function () {
+//     document.querySelector('*' && 'body').setAttribute("class", "verde");
+// });
+// document.getElementById('azul-btn').addEventListener('click', function () {
+//     document.querySelector('*' && 'body').setAttribute("class", "azul");
+// });
+// document.getElementById('amd-btn').addEventListener('click', function () {
+//     document.querySelector('*' && 'body').setAttribute("class", "amd");
+// });
