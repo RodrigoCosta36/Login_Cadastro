@@ -75,6 +75,13 @@
                         <br><br>
                         <label class="nomeQR" for="descricao">Descrição:</label>
                         <span type="text" name="descricao" id="descricao"></span>
+                        <div>
+                            <p id="contador"></p>
+                            <button id="produtos" class="btn btn-success" onclick="produtos.salvar()">Salvar</button>
+                            <button id="diminuir" class="btn btn-warning">Excluir</button>
+                            <button id="adiciona" class="btn btn-warning">Adicionar +1</button>
+                            <button id="limpar" class="btn btn-danger">Limpar</button>
+                        </div>
                     </div>
                     <br>
                 </div>
@@ -85,13 +92,6 @@
                         <br>
                         <input class="test barra" type="text" name="codBarra" id="codBarra" placeholder=""
                             autocomplete="off" onchange="checked()">
-                    </div>
-                    <div>
-                        <p id="contador"></p>
-                        <button id="produtos" class="btn btn-success" onclick="produtos.salvar()">Salvar</button>
-                        <button id="diminuir" class="btn btn-warning">Excluir</button>
-                        <button id="adiciona" class="btn btn-warning">Adicionar +1</button>
-                        <button id="limpar" class="btn btn-danger">Limpar</button>
                     </div>
                 </div>
             </section>
