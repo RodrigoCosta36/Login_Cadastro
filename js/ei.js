@@ -9,8 +9,8 @@ const referencia = document.getElementById('referencia');
 const descricao = document.getElementById('descricao');
 
 document.getElementById('number').focus();
-document.getElementById('codBarra').onchange = function () {
-    checked();
+document.getElementById('codBarraPrimary').onchange = function () {
+    retorno();
 };
 
 let usuarios = localStorage.getItem('usuarios');
@@ -30,18 +30,6 @@ function sair() {
     window.location.href = 'https://conferenciapa.netlify.app/';
 };
 
-diminuir.addEventListener('click', function () {
-    if (contagem >= 1) {
-        contador.innerHTML = --contagem;
-    } else {
-        alert("Quantidade não pode ser menor que ZERO.");
-    }
-});
-
-adiciona.addEventListener('click', function () {
-    contador.innerHTML = ++contagem;
-});
-
 limpar.addEventListener('click', function () {
     var r = confirm("Clique em OK para limpar todos os campos!");
     if (r == true) {
@@ -55,17 +43,6 @@ limpar.addEventListener('click', function () {
     }
 });
 
-function checked() {
-    if (codigos.value == codigoBarra.value) {
-        contador.innerHTML = ++contagem;
-        codigos.value = codigos.value = "";
-    } else {
-        let x = document.getElementById('audio');
-        x.play();
-        codigos.value = "";
-    }
-};
-
 function retorno() {
     fetch("/json/info.json").then((response) => {
         response.json().then((info) => {
@@ -74,11 +51,13 @@ function retorno() {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
                     contador.innerHTML = ++contagem;
+
+                    produtos.salvar();
                 }
             })
         })
     })
-    document.getElementById('codBarra').focus();
+    document.getElementById('codBarraPrimary').focus();
 };
 function enter() {
     document.getElementById('codBarraPrimary').focus();
@@ -100,13 +79,11 @@ class Produto {
 
         this.listaTabela();
         codigoBarra.value = "";
-        codigos.value = "";
-        contador.innerHTML = contagem = 0;
-        referencia.innerHTML = contagem = "";
-        descricao.innerHTML = contagem = "";
-        number.value = "";
+        // contador.innerHTML = contagem = 0;
+        // referencia.innerHTML = contagem = '';
+        // descricao.innerHTML = contagem = "";
 
-        document.getElementById('number').focus();
+        document.getElementById('codBarraPrimary').focus();
     };
 
     listaTabela() {
