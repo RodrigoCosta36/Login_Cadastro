@@ -66,7 +66,7 @@ function enter() {
 class Produto {
 
     constructor() {
-        this.id = 1;
+        this.id = number.value;
         this.arrayProdutos = [];
     }
 
@@ -102,7 +102,7 @@ class Produto {
 
             td_id.innerHTML = this.arrayProdutos[i].id;
             td_sku.innerHTML = this.arrayProdutos[i].referencia;
-            td_qtde.innerHTML = this.arrayProdutos[i].contador;
+            td_qtde.innerHTML = 1;
             td_descricao.innerHTML = this.arrayProdutos[i].descricao;
             td_conferente.innerHTML = `${usuarios}`;
 
