@@ -99,7 +99,6 @@ class Produto {
             let td_qtde = tr.insertCell();
             let td_descricao = tr.insertCell();
             let td_conferente = tr.insertCell();
-            let td_acoes = tr.insertCell();
 
             td_id.innerHTML = this.arrayProdutos[i].id;
             td_sku.innerHTML = this.arrayProdutos[i].referencia;
@@ -110,20 +109,7 @@ class Produto {
             td_id.classList.add('center');
             td_sku.classList.add('center');
             td_qtde.classList.add('center');
-            td_acoes.classList.add('center');
             td_conferente.classList.add('center');
-
-            let imgEdit = document.createElement('img');
-            imgEdit.src = '_icon/editar.png';
-            imgEdit.setAttribute("onclick", "produtos.editar(" + JSON.stringify(this.arrayProdutos[i]) + ")");
-
-            td_acoes.appendChild(imgEdit);
-
-            let imgDelet = document.createElement('img');
-            imgDelet.src = '_icon/excluir.png';
-            imgDelet.setAttribute("onclick", "produtos.deletar(" + this.arrayProdutos[i].id + ")");
-
-            td_acoes.appendChild(imgDelet);
         }
 
 
