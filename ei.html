@@ -64,36 +64,36 @@
                 <input type="text" class="left btn btn-light" name="number" id="number" autocomplete="off"
                     onchange="enter()">
 
-                
+                <div class="descripition border_box">
+                    
+                    <br>
+                </div>
                 <br>
                 <div class="border_box sub_container">
-                    <div class="descripition border_box">
-                        <label class="nomeQR" for="codBarraPrimary">Código de Barra:</label><span><i
-                                class="bi bi-upc-scan"></i></span>
-                        <input class="barras" type="text" name="codBarraPrimary" id="codBarraPrimary" autocomplete="off"
-                            onchange="retorno()"><br><br>
-                        <div>
-                            <label class="nomeQR" for="referencia">Referência:</label>
-                            <span type="text" name="referencia" id="referencia"></span>
-                            <br><br>
-                            <label class="nomeQR" for="descricao">Descrição:</label>
-                            <span type="text" name="descricao" id="descricao"></span>
-                            <div>
-                                <p id="contador"></p>
-                                <button id="produtos" class="btn btn-success" onclick="produtos.salvar()">Salvar</button>
-                                <button id="diminuir" class="btn btn-warning">Excluir</button>
-                                <button id="adiciona" class="btn btn-warning">Adicionar +1</button>
-                                <button id="limpar" class="btn btn-danger">Limpar</button>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
                   <!-- <div>
                         <label class="nomeQR" for="codBarra">Código de Barra:</label>
                         <br>
                         <input class="test barra" type="text" name="codBarra" id="codBarra" placeholder=""
                             autocomplete="off" onchange="checked()">
                     </div>-->
+                    <label class="nomeQR" for="codBarraPrimary">Código de Barra:</label><span><i
+                        class="bi bi-upc-scan"></i></span>
+                <input class="barras" type="text" name="codBarraPrimary" id="codBarraPrimary" autocomplete="off"
+                    onchange="retorno()"><br><br>
+                <div>
+                    <label class="nomeQR" for="referencia">Referência:</label>
+                    <span type="text" name="referencia" id="referencia"></span>
+                    <br><br>
+                    <label class="nomeQR" for="descricao">Descrição:</label>
+                    <span type="text" name="descricao" id="descricao"></span>
+                    <div>
+                        <p id="contador"></p>
+                        <button id="produtos" class="btn btn-success" onclick="produtos.salvar()">Salvar</button>
+                        <button id="diminuir" class="btn btn-warning">Excluir</button>
+                        <button id="adiciona" class="btn btn-warning">Adicionar +1</button>
+                        <button id="limpar" class="btn btn-danger">Limpar</button>
+                    </div>
+                </div>
                 </div>
             </section>
 
