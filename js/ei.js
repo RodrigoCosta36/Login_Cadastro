@@ -50,7 +50,7 @@ function retorno() {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
-                    contador.innerHTML = +contagem;
+                    contador.innerHTML = ++contagem;
 
                     produtos.salvar();
                 }
@@ -91,7 +91,7 @@ class Produto {
         tbody.innerHTML = '';
 
         //for (let i = 0; i < this.arrayProdutos.length; i++) {
-        for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
+        for (let i = this.arrayProdutos.length - 1; i >= 0; i-) {
             let tr = tbody.insertRow();
 
             let td_id = tr.insertCell();
