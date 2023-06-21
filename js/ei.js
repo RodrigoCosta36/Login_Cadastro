@@ -50,7 +50,7 @@ function retorno() {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
-                    contador.innerHTML = ++contagem;
+                    contador.innerHTML = +contagem;
 
                     produtos.salvar();
                 }
