@@ -66,7 +66,7 @@ function enter() {
 class Produto {
 
     constructor() {
-        this.id = number.value;
+        this.id = 1;
         this.arrayProdutos = [];
     }
 
