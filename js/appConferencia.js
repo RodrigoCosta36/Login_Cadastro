@@ -67,9 +67,9 @@ function checked() {
 };
 
 function retorno() {
-    fetch("/json/info.json").then((response) => {
-        response.json().then((info) => {
-            info.infos.map((peca) => {
+    fetch("/json/sb1.json").then((response) => {
+        response.json().then((sb1) => {
+            sb1.infos.map((peca) => {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
