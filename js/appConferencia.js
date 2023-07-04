@@ -1,10 +1,6 @@
 let contagem = 0;
 contador.innerHTML = contagem;
 
-let dataHoraAtual = new Date();
-let dataHoraFormatada = dataHoraAtual.toLocaleString();
-td_dataHora.innerHTML = dataHoraFormatada;
-
 const codigoBarra = document.getElementById('codBarraPrimary');
 const codigos = document.getElementById('codBarra');
 const diminuir = document.getElementById('diminuir');
@@ -126,7 +122,6 @@ class Produto {
             let td_qtde = tr.insertCell();
             let td_descricao = tr.insertCell();
             let td_conferente = tr.insertCell();
-            let td_dataHora = tr.insertCell();
             let td_acoes = tr.insertCell();
 
             td_id.innerHTML = this.arrayProdutos[i].id;
@@ -134,11 +129,6 @@ class Produto {
             td_qtde.innerHTML = this.arrayProdutos[i].contador;
             td_descricao.innerHTML = this.arrayProdutos[i].descricao;
             td_conferente.innerHTML = `${usuarios}`;
-
-            let dataHoraAtual = new Date();
-      let dataHoraFormatada = dataHoraAtual.toLocaleString();
-
-      td_dataHora.innerHTML = dataHoraFormatada;
 
             td_id.classList.add('center');
             td_sku.classList.add('center');
