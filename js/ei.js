@@ -44,7 +44,7 @@ limpar.addEventListener('click', function () {
 });
 
 function retorno() {
-    fetch("/json/info.json").then((response) => {
+    fetch("/json/sb1.json").then((response) => {
         response.json().then((sb1) => {
             sb1.infos.map((peca) => {
                 if (codigoBarra.value == peca.codBarras) {

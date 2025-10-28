@@ -32,8 +32,8 @@ button.amd {
 }
 
 .amd {
-    background: rgb(0, 36, 18);
-    background: linear-gradient(130deg, rgb(0, 36, 18) 0%, rgb(9, 121, 65) 37%, rgb(0, 255, 170) 100%);
+    background: rgb(35, 0, 36);
+    background: linear-gradient(130deg, rgb(36, 0, 33) 0%, rgb(121, 9, 121) 37%, rgb(225, 0, 255) 100%);
     transition: all 0.5s ease-in-out;
     color: transparent;
 }
