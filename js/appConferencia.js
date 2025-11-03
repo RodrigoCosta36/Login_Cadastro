@@ -9,6 +9,9 @@ const referencia = document.getElementById('referencia');
 const descricao = document.getElementById('descricao');
 
 document.getElementById('number').focus();
+document.getElementById('codBarra').onchange = function () {
+    checked();
+};
 
 let usuarios = localStorage.getItem('usuarios');
 document.getElementById('nomeUser').innerHTML = `Olá, ${usuarios}`;
