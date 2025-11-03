@@ -139,7 +139,7 @@ class Produto {
     }
 
     deletar(indice) {
-        if (confirm(`Excluir a placa: ${this.arrayProdutos[indice].id}?`)) {
+        if (confirm(`Excluir o Baú Nº: ${this.arrayProdutos[indice].id}?`)) {
             this.arrayProdutos.splice(indice, 1);
             this.salvarLocal();
             this.listaTabela();
