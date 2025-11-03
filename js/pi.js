@@ -91,8 +91,8 @@ class Produto {
         codigoBarra.value = "";
     };
 
-    adicionar(produtos) {
-        this.arrayProdutos.push(produtos);
+    adicionar(registro) {
+        this.arrayProdutos.push(registro);
         this.id++;
     };
 
