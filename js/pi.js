@@ -13,6 +13,25 @@ document.getElementById('codBarraPrimary').onchange = function () {
     retorno();
 };
 
+document.getElementById("limparBusca")?.addEventListener("click", () => {
+    document.getElementById("buscar").value = "";
+    produtos.listaTabela();
+});
+
+document.getElementById("limparTabela")?.addEventListener("click", () => {
+    if(confirm("Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita!")) {
+        produtos.arrayProdutos = []; // esvazia o array
+        produtos.salvarLocal(); // atualiza o localStorage
+        produtos.listaTabela(); // atualiza a tabela visual
+        alert("Tabela limpa com sucesso!");
+    }
+});
+
+document.getElementById('codBarraPrimary').focus();
+document.getElementById('codBarraPrimary').onchange = function () {
+    retorno();
+};
+
 let usuarios = localStorage.getItem('usuarios');
 let nomeLogado = document.getElementById('nomeUser');
 
@@ -74,15 +93,20 @@ class Produto {
         let produtos = this.lerDados();
 
         if (this.validaCampos(produtos)) {
-            this.adicionar(produtos);
+
+            if (this.editando == true) {
+                this.arrayProdutos[this.indexEditar] = produtos;
+                this.editando = false;
+                this.indexEditar = null;
+            } else {
+                this.arrayProdutos.push(produtos);
+            }
+
+            this.salvarLocal();
         };
 
         this.listaTabela();
         codigoBarra.value = "";
-        // contador.innerHTML = contagem = 0;
-        // referencia.innerHTML = contagem = '';
-        // descricao.innerHTML = contagem = "";
-
         document.getElementById('codBarraPrimary').focus();
     };
 
@@ -90,29 +114,30 @@ class Produto {
         let tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
 
-        //for (let i = 0; i < this.arrayProdutos.length; i++) {
-        for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
+        let filtro = document.getElementById("buscar")?.value?.toLowerCase() || "";
+
+        let filtrados = this.arrayProdutos.filter(item =>
+            item.id.toLowerCase().includes(filtro) ||
+            item.referencia.toLowerCase().includes(filtro) ||
+            item.descricao.toLowerCase().includes(filtro)
+        );
+
+        filtrados.forEach((item, index) => {
             let tr = tbody.insertRow();
 
-            let td_id = tr.insertCell();
-            let td_sku = tr.insertCell();
-            let td_qtde = tr.insertCell();
-            let td_descricao = tr.insertCell();
-            let td_conferente = tr.insertCell();
+            tr.insertCell().innerHTML = item.id;
+            tr.insertCell().innerHTML = item.referencia;
+            tr.insertCell().innerHTML = 1;
+            tr.insertCell().innerHTML = item.descricao;
+            tr.insertCell().innerHTML = `${usuarios}`;
 
-            td_id.innerHTML = this.arrayProdutos[i].id;
-            td_sku.innerHTML = this.arrayProdutos[i].referencia;
-            td_qtde.innerHTML = 1;
-            td_descricao.innerHTML = this.arrayProdutos[i].descricao;
-            td_conferente.innerHTML = `${usuarios}`;
-
-            td_id.classList.add('center');
-            td_sku.classList.add('center');
-            td_qtde.classList.add('center');
-            td_conferente.classList.add('center');
-        }
-
-
+            let td_acoes = tr.insertCell();
+            td_acoes.innerHTML = `
+                <button onclick="produtos.editar(${index})">✏️</button>
+                <button onclick="produtos.deletar(${index})">🗑️</button>
+            `;
+            td_acoes.classList.add('center');
+        })
     };
 
     adicionar(produtos) {
@@ -120,50 +145,46 @@ class Produto {
         this.id++;
     };
 
-    editar(dados) {
-        document.getElementById('number').value = dados.id;
-        referencia.innerHTML = dados.referencia;
-        descricao.innerHTML = dados.descricao;
-        contador.innerHTML = dados.contador;
+    editar(indice) {
+        this.editando = true;
+        this.indexEditar = indice;
+
+        document.getElementById('number').value = this.arrayProdutos[indice].id;
+        referencia.innerHTML = this.arrayProdutos[indice].referencia;
+        descricao.innerHTML = this.arrayProdutos[indice].descricao;
+        contador.innerHTML = this.arrayProdutos[indice].contador;
+
+        document.getElementById('number').focus();
     }
 
     lerDados() {
-        let produtos = {}
-
-        produtos.id = document.getElementById('number').value;
-        produtos.referencia = referencia.innerHTML;
-        produtos.contador = contador.innerHTML;
-        produtos.descricao = descricao.innerHTML;
-
-        return produtos;
+        return {
+            id: document.getElementById('number').value,
+            referencia: referencia.innerHTML,
+            descricao: descricao.innerHTML,
+            contador: contador.innerHTML
+        };
     };
 
     validaCampos(produtos) {
-        let msg = '';
-
         if (produtos.referencia == '' && produtos.descricao == '') {
-            msg += 'Campo não pode ser vazio \n';
-        }
-        if (msg != '') {
-            alert(msg);
-            return false
+            alert('Campo não pode ser vazio');
+            return false;
         }
         return true;
     };
 
-    deletar(id) {
-        if (confirm(`Excluir o Baú Nº ${id} ?`)) {
-            let tbody = document.getElementById('tbody');
-
-            for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
-                if (this.arrayProdutos[i].id == id) {
-                    this.arrayProdutos.splice(i, 1);
-                    tbody.deleteRow(i);
-                }
-            };
-
-        };
+    deletar(indice) {
+        if (confirm(`Excluir o item com a Placa: ${this.arrayProdutos[indice].id}?`)) {
+            this.arrayProdutos.splice(indice, 1);
+            this.salvarLocal();
+            this.listaTabela();
+        }
     };
+
+    salvarLocal() {
+        localStorage.setItem("tabela", JSON.stringify(this.arrayProdutos));
+    }
 };
 
 var produtos = new Produto();
@@ -175,12 +196,9 @@ document.getElementById('exportCSV').addEventListener('click', function () {
 
 document.querySelector('*' && 'body').setAttribute("class", 'amd');
 
-// document.getElementById('verde-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "verde");
-// });
-// document.getElementById('azul-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "azul");
-// });
-// document.getElementById('amd-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "amd");
-// });
+// Filtro digitando na hora
+document.getElementById("buscar")?.addEventListener("keyup", () => {
+    produtos.listaTabela();
+});
+
+document.querySelector('*' && 'body').setAttribute("class", 'amd');
