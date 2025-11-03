@@ -82,8 +82,11 @@ function retorno() {
             });
         });
 
+    document.getElementById('codBarra').focus();
+};
+function enter() {
     document.getElementById('codBarraPrimary').focus();
-}
+};
 
 // Classe Produto
 class Produto {
