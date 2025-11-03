@@ -79,9 +79,6 @@ class Produto {
 
         this.listaTabela();
         codigoBarra.value = "";
-        // contador.innerHTML = contagem = 0;
-        // referencia.innerHTML = contagem = '';
-        // descricao.innerHTML = contagem = "";
 
         document.getElementById('codBarraPrimary').focus();
     };
@@ -90,7 +87,6 @@ class Produto {
         let tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
 
-        //for (let i = 0; i < this.arrayProdutos.length; i++) {
         for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
             let tr = tbody.insertRow();
 
@@ -111,8 +107,6 @@ class Produto {
             td_qtde.classList.add('center');
             td_conferente.classList.add('center');
         }
-
-
     };
 
     adicionar(produtos) {
@@ -175,12 +169,33 @@ document.getElementById('exportCSV').addEventListener('click', function () {
 
 document.querySelector('*' && 'body').setAttribute("class", 'amd');
 
-// document.getElementById('verde-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "verde");
-// });
-// document.getElementById('azul-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "azul");
-// });
-// document.getElementById('amd-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "amd");
-// });
+
+// ✅✅✅ NOVAS FUNÇÕES ADICIONADAS ✅✅✅
+
+// 🔎 FILTRAR AO DIGITAR
+document.getElementById("buscar")?.addEventListener("keyup", () => {
+    const filtro = document.getElementById("buscar").value.toLowerCase();
+    const linhas = document.querySelectorAll("#tbody tr");
+
+    linhas.forEach(linha => {
+        const texto = linha.innerText.toLowerCase();
+        linha.style.display = texto.includes(filtro) ? "" : "none";
+    });
+});
+
+// 🧽 LIMPAR BUSCA
+document.getElementById("limparBusca")?.addEventListener("click", () => {
+    document.getElementById("buscar").value = "";
+    const linhas = document.querySelectorAll("#tbody tr");
+    linhas.forEach(linha => linha.style.display = "");
+});
+
+// 🗑 LIMPAR TABELA COMPLETA
+document.getElementById("limparTabela")?.addEventListener("click", () => {
+    if (confirm("⚠️ Tem certeza que deseja limpar toda a tabela? Essa ação não pode ser desfeita!")) {
+        produtos.arrayProdutos = [];
+        document.getElementById("tbody").innerHTML = "";
+        contagem = 0;
+        contador.innerHTML = 0;
+    }
+});

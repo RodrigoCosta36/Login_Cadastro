@@ -9,27 +9,25 @@ const referencia = document.getElementById('referencia');
 const descricao = document.getElementById('descricao');
 
 document.getElementById('number').focus();
-document.getElementById('codBarra').onchange = function () {
-    checked();
-};
 
 let usuarios = localStorage.getItem('usuarios');
-let nomeLogado = document.getElementById('nomeUser');
+document.getElementById('nomeUser').innerHTML = `Olá, ${usuarios}`;
 
-nomeLogado.innerHTML = `Olá, ${usuarios}`
-
+// Verifica login
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
     window.location.href = 'https://conferenciapa.netlify.app/';
 }
 
+// Logout
 function sair() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuarioLogado');
     localStorage.removeItem('usuarios');
     window.location.href = 'https://conferenciapa.netlify.app/';
-};
+}
 
+// Botão diminuir
 diminuir.addEventListener('click', function () {
     if (contagem >= 1) {
         contador.innerHTML = --contagem;
@@ -38,16 +36,17 @@ diminuir.addEventListener('click', function () {
     }
 });
 
+// Botão adicionar +1
 adiciona.addEventListener('click', function () {
     contador.innerHTML = ++contagem;
 });
 
+// Limpar campos
 limpar.addEventListener('click', function () {
-    var r = confirm("Clique em OK para limpar todos os campos!");
-    if (r == true) {
+    if (confirm("Clique em OK para limpar todos os campos!")) {
         contador.innerHTML = contagem = 0;
-        referencia.innerHTML = contagem = "";
-        descricao.innerHTML = contagem = "";
+        referencia.innerHTML = "";
+        descricao.innerHTML = "";
         number.value = "";
         codigoBarra.value = "";
         codigos.value = "";
@@ -55,169 +54,158 @@ limpar.addEventListener('click', function () {
     }
 });
 
+// Verifica segunda leitura
 function checked() {
     if (codigos.value == codigoBarra.value) {
         contador.innerHTML = ++contagem;
-        codigos.value = codigos.value = "";
+        codigos.value = "";
     } else {
-        let x = document.getElementById('audio');
-        x.play();
+        document.getElementById('audio').play();
         codigos.value = "";
     }
-};
+}
 
+// API JSON
 function retorno() {
-    fetch("/json/sb1.json").then((response) => {
-        response.json().then((sb1) => {
+    fetch("/json/sb1.json")
+        .then(res => res.json())
+        .then((sb1) => {
             sb1.infos.map((peca) => {
                 if (codigoBarra.value == peca.codBarras) {
                     referencia.innerHTML = peca.sku;
                     descricao.innerHTML = peca.descricao;
                     contador.innerHTML = ++contagem;
                 }
-            })
-        })
-    })
-    document.getElementById('codBarra').focus();
-};
-function enter() {
-    document.getElementById('codBarraPrimary').focus();
-};
+            });
+        });
 
+    document.getElementById('codBarraPrimary').focus();
+}
+
+// Classe Produto
 class Produto {
 
     constructor() {
-        this.id = number.value;
-        this.arrayProdutos = [];
+        this.arrayProdutos = JSON.parse(localStorage.getItem("tabela")) || [];
+        this.listaTabela();
     }
 
     salvar() {
         let produtos = this.lerDados();
 
         if (this.validaCampos(produtos)) {
-            this.adicionar(produtos);
-        };
+            this.arrayProdutos.push(produtos);
+            this.salvarLocal();
+        }
 
         this.listaTabela();
+
         codigoBarra.value = "";
         codigos.value = "";
         contador.innerHTML = contagem = 0;
-        referencia.innerHTML = contagem = "";
-        descricao.innerHTML = contagem = "";
+        referencia.innerHTML = "";
+        descricao.innerHTML = "";
         number.value = "";
-
         document.getElementById('number').focus();
-    };
+    }
 
     listaTabela() {
         let tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
 
-        //for (let i = 0; i < this.arrayProdutos.length; i++) {
-        for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
+        // FILTRO AO VIVO
+        let filtro = document.getElementById("buscar")?.value?.toLowerCase() || "";
+
+        let filtrados = this.arrayProdutos.filter(item =>
+            item.id.toLowerCase().includes(filtro) ||
+            item.referencia.toLowerCase().includes(filtro) ||
+            item.descricao.toLowerCase().includes(filtro)
+        );
+
+        filtrados.reverse().forEach((item) => {
             let tr = tbody.insertRow();
 
-            let td_id = tr.insertCell();
-            let td_sku = tr.insertCell();
-            let td_qtde = tr.insertCell();
-            let td_descricao = tr.insertCell();
-            let td_conferente = tr.insertCell();
+            tr.insertCell().innerHTML = item.id;
+            tr.insertCell().innerHTML = item.referencia;
+            tr.insertCell().innerHTML = item.contador;
+            tr.insertCell().innerHTML = item.descricao;
+            tr.insertCell().innerHTML = `${usuarios}`;
+
             let td_acoes = tr.insertCell();
-
-            td_id.innerHTML = this.arrayProdutos[i].id;
-            td_sku.innerHTML = this.arrayProdutos[i].referencia;
-            td_qtde.innerHTML = this.arrayProdutos[i].contador;
-            td_descricao.innerHTML = this.arrayProdutos[i].descricao;
-            td_conferente.innerHTML = `${usuarios}`;
-
-            td_id.classList.add('center');
-            td_sku.classList.add('center');
-            td_qtde.classList.add('center');
             td_acoes.classList.add('center');
-            td_conferente.classList.add('center');
 
-            let imgEdit = document.createElement('img');
-            imgEdit.src = '_icon/editar.png';
-            imgEdit.setAttribute("onclick", "produtos.editar(" + JSON.stringify(this.arrayProdutos[i]) + ")");
+            td_acoes.innerHTML = `
+                <button onclick="produtos.editar('${item.id}')">✏️</button>
+                <button onclick="produtos.deletar('${item.id}')">🗑️</button>
+            `;
+        });
+    }
 
-            td_acoes.appendChild(imgEdit);
-
-            let imgDelet = document.createElement('img');
-            imgDelet.src = '_icon/excluir.png';
-            imgDelet.setAttribute("onclick", "produtos.deletar(" + this.arrayProdutos[i].id + ")");
-
-            td_acoes.appendChild(imgDelet);
-        }
-
-
-    };
-
-    adicionar(produtos) {
-        this.arrayProdutos.push(produtos);
-        this.id++;
-    };
-
-    editar(dados) {
-        document.getElementById('number').value = dados.id;
-        referencia.innerHTML = dados.referencia;
-        descricao.innerHTML = dados.descricao;
-        contador.innerHTML = dados.contador;
+    editar(id) {
+        let produto = this.arrayProdutos.find(x => x.id == id);
+        document.getElementById('number').value = produto.id;
+        referencia.innerHTML = produto.referencia;
+        descricao.innerHTML = produto.descricao;
+        contador.innerHTML = produto.contador;
     }
 
     lerDados() {
-        let produtos = {}
-
-        produtos.id = document.getElementById('number').value;
-        produtos.referencia = referencia.innerHTML;
-        produtos.contador = contador.innerHTML;
-        produtos.descricao = descricao.innerHTML;
-
-        return produtos;
-    };
+        return {
+            id: document.getElementById('number').value,
+            referencia: referencia.innerHTML,
+            contador: contador.innerHTML,
+            descricao: descricao.innerHTML
+        }
+    }
 
     validaCampos(produtos) {
-        let msg = '';
-
         if (produtos.referencia == '' && produtos.descricao == '') {
-            msg += 'Campo não pode ser vazio \n';
-        }
-        if (msg != '') {
-            alert(msg);
-            return false
+            alert('Campo não pode ser vazio');
+            return false;
         }
         return true;
-    };
+    }
 
     deletar(id) {
         if (confirm(`Excluir o Baú Nº ${id} ?`)) {
-            let tbody = document.getElementById('tbody');
+            this.arrayProdutos = this.arrayProdutos.filter(x => x.id != id);
+            this.salvarLocal();
+            this.listaTabela();
+        }
+    }
 
-            for (let i = this.arrayProdutos.length - 1; i >= 0; i--) {
-                if (this.arrayProdutos[i].id == id) {
-                    this.arrayProdutos.splice(i, 1);
-                    tbody.deleteRow(i);
-                }
-            };
-
-        };
-    };
-};
+    salvarLocal() {
+        localStorage.setItem("tabela", JSON.stringify(this.arrayProdutos));
+    }
+}
 
 var produtos = new Produto();
 
+// EXPORTAR CSV
 document.getElementById('exportCSV').addEventListener('click', function () {
     var table2excel = new Table2Excel();
-    table2excel.export(document.getElementById('export'))
+    table2excel.export(document.getElementById('export'));
+});
+
+// LIMPAR BUSCA
+document.getElementById("limparBusca")?.addEventListener("click", () => {
+    document.getElementById("buscar").value = "";
+    produtos.listaTabela();
+});
+
+// LIMPAR TABELA
+document.getElementById("limparTabela")?.addEventListener("click", () => {
+    if (confirm("Tem certeza que deseja limpar toda a tabela?")) {
+        produtos.arrayProdutos = [];
+        produtos.salvarLocal();
+        produtos.listaTabela();
+        alert("Tabela limpa com sucesso!");
+    }
+});
+
+// FILTRAR AO DIGITAR
+document.getElementById("buscar")?.addEventListener("keyup", () => {
+    produtos.listaTabela();
 });
 
 document.querySelector('*' && 'body').setAttribute("class", 'amd');
-
-// document.getElementById('verde-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "verde");
-// });
-// document.getElementById('azul-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "azul");
-// });
-// document.getElementById('amd-btn').addEventListener('click', function () {
-//     document.querySelector('*' && 'body').setAttribute("class", "amd");
-// });

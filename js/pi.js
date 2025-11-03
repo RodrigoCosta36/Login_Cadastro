@@ -13,25 +13,6 @@ document.getElementById('codBarraPrimary').onchange = function () {
     retorno();
 };
 
-document.getElementById("limparBusca")?.addEventListener("click", () => {
-    document.getElementById("buscar").value = "";
-    produtos.listaTabela();
-});
-
-document.getElementById("limparTabela")?.addEventListener("click", () => {
-    if(confirm("Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita!")) {
-        produtos.arrayProdutos = []; // esvazia o array
-        produtos.salvarLocal(); // atualiza o localStorage
-        produtos.listaTabela(); // atualiza a tabela visual
-        alert("Tabela limpa com sucesso!");
-    }
-});
-
-document.getElementById('codBarraPrimary').focus();
-document.getElementById('codBarraPrimary').onchange = function () {
-    retorno();
-};
-
 let usuarios = localStorage.getItem('usuarios');
 let nomeLogado = document.getElementById('nomeUser');
 
@@ -50,11 +31,10 @@ function sair() {
 };
 
 limpar.addEventListener('click', function () {
-    var r = confirm("Clique em OK para limpar todos os campos!");
-    if (r == true) {
+    if (confirm("Clique em OK para limpar todos os campos!")) {
         contador.innerHTML = contagem = 0;
-        referencia.innerHTML = contagem = "";
-        descricao.innerHTML = contagem = "";
+        referencia.innerHTML = "";
+        descricao.innerHTML = "";
         number.value = "";
         codigoBarra.value = "";
         codigos.value = "";
@@ -78,36 +58,34 @@ function retorno() {
     })
     document.getElementById('codBarraPrimary').focus();
 };
-function enter() {
-    document.getElementById('codBarraPrimary').focus();
-};
 
+// ===================================================
+//  CLASSE PRODUTO
+// ===================================================
 class Produto {
 
     constructor() {
-        this.id = number.value;
-        this.arrayProdutos = [];
+        this.arrayProdutos = JSON.parse(localStorage.getItem("tabela")) || [];
     }
 
     salvar() {
-        let produtos = this.lerDados();
+        let registro = this.lerDados();
 
-        if (this.validaCampos(produtos)) {
+        if (this.validaCampos(registro)) {
 
             if (this.editando == true) {
-                this.arrayProdutos[this.indexEditar] = produtos;
+                this.arrayProdutos[this.indexEditar] = registro;
                 this.editando = false;
                 this.indexEditar = null;
             } else {
-                this.arrayProdutos.push(produtos);
+                this.arrayProdutos.push(registro);
             }
 
             this.salvarLocal();
-        };
+        }
 
         this.listaTabela();
         codigoBarra.value = "";
-        document.getElementById('codBarraPrimary').focus();
     };
 
     listaTabela() {
@@ -140,11 +118,6 @@ class Produto {
         })
     };
 
-    adicionar(produtos) {
-        this.arrayProdutos.push(produtos);
-        this.id++;
-    };
-
     editar(indice) {
         this.editando = true;
         this.indexEditar = indice;
@@ -157,6 +130,14 @@ class Produto {
         document.getElementById('number').focus();
     }
 
+    deletar(indice) {
+        if (confirm(`Excluir a placa: ${this.arrayProdutos[indice].id}?`)) {
+            this.arrayProdutos.splice(indice, 1);
+            this.salvarLocal();
+            this.listaTabela();
+        }
+    };
+
     lerDados() {
         return {
             id: document.getElementById('number').value,
@@ -166,37 +147,50 @@ class Produto {
         };
     };
 
-    validaCampos(produtos) {
-        if (produtos.referencia == '' && produtos.descricao == '') {
+    validaCampos(registro) {
+        if (registro.referencia == '' && registro.descricao == '') {
             alert('Campo não pode ser vazio');
             return false;
         }
         return true;
     };
 
-    deletar(indice) {
-        if (confirm(`Excluir o item com a Placa: ${this.arrayProdutos[indice].id}?`)) {
-            this.arrayProdutos.splice(indice, 1);
-            this.salvarLocal();
-            this.listaTabela();
-        }
-    };
-
     salvarLocal() {
         localStorage.setItem("tabela", JSON.stringify(this.arrayProdutos));
     }
-};
+}
 
 var produtos = new Produto();
+produtos.listaTabela(); // ✅ Carrega ao abrir
 
+// ======================================================================
+// 🔎 FILTRAR DIGITANDO
+// ======================================================================
+document.getElementById("buscar")?.addEventListener("keyup", () => {
+    produtos.listaTabela();
+});
+
+// 🧽 LIMPAR BUSCA
+document.getElementById("limparBusca")?.addEventListener("click", () => {
+    document.getElementById("buscar").value = "";
+    produtos.listaTabela();
+});
+
+// 🗑 LIMPAR TABELA COMPLETA
+document.getElementById("limparTabela")?.addEventListener("click", () => {
+    if (confirm("Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita!")) {
+        produtos.arrayProdutos = [];
+        produtos.salvarLocal();
+        produtos.listaTabela();
+        alert("Tabela limpa com sucesso!");
+    }
+});
+
+// EXPORTA EXCEL
 document.getElementById('exportCSV').addEventListener('click', function () {
     var table2excel = new Table2Excel();
     table2excel.export(document.getElementById('export'))
 });
 
-document.querySelector('*' && 'body').setAttribute("class", 'amd');
-
-// Filtro digitando na hora
-document.getElementById("buscar")?.addEventListener("keyup", () => {
-    produtos.listaTabela();
-});
+document.getElementById('codBarraPrimary').focus();
+document.querySelector('body').setAttribute("class", 'amd');
