@@ -58,6 +58,9 @@ function retorno() {
     })
     document.getElementById('codBarraPrimary').focus();
 };
+function enter() {
+    document.getElementById('codBarraPrimary').focus();
+};
 
 // ===================================================
 //  CLASSE PRODUTO
@@ -86,6 +89,11 @@ class Produto {
 
         this.listaTabela();
         codigoBarra.value = "";
+    };
+
+    adicionar(produtos) {
+        this.arrayProdutos.push(produtos);
+        this.id++;
     };
 
     listaTabela() {
