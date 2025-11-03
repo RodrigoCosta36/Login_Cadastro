@@ -200,5 +200,3 @@ document.querySelector('*' && 'body').setAttribute("class", 'amd');
 document.getElementById("buscar")?.addEventListener("keyup", () => {
     produtos.listaTabela();
 });
-
-document.querySelector('*' && 'body').setAttribute("class", 'amd');
