@@ -16,13 +16,11 @@ document.getElementById('codBarra').onchange = function () {
 let usuarios = localStorage.getItem('usuarios');
 document.getElementById('nomeUser').innerHTML = `Olá, ${usuarios}`;
 
-// Verifica login
 if (localStorage.getItem('token') == null) {
     alert('Login Obrigatório.');
     window.location.href = 'https://conferenciapa.netlify.app/';
 }
 
-// Logout
 function sair() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuarioLogado');
@@ -30,7 +28,6 @@ function sair() {
     window.location.href = 'https://conferenciapa.netlify.app/';
 }
 
-// Botão diminuir
 diminuir.addEventListener('click', function () {
     if (contagem >= 1) {
         contador.innerHTML = --contagem;
@@ -39,12 +36,10 @@ diminuir.addEventListener('click', function () {
     }
 });
 
-// Botão adicionar +1
 adiciona.addEventListener('click', function () {
     contador.innerHTML = ++contagem;
 });
 
-// Limpar campos
 limpar.addEventListener('click', function () {
     if (confirm("Clique em OK para limpar todos os campos!")) {
         contador.innerHTML = contagem = 0;
@@ -57,7 +52,6 @@ limpar.addEventListener('click', function () {
     }
 });
 
-// Verifica segunda leitura
 function checked() {
     if (codigos.value == codigoBarra.value) {
         contador.innerHTML = ++contagem;
@@ -68,7 +62,6 @@ function checked() {
     }
 }
 
-// API JSON
 function retorno() {
     fetch("/json/sb1.json")
         .then(res => res.json())
@@ -88,7 +81,6 @@ function enter() {
     document.getElementById('codBarraPrimary').focus();
 };
 
-// Classe Produto
 class Produto {
 
     constructor() {
@@ -119,7 +111,6 @@ class Produto {
         let tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
 
-        // FILTRO AO VIVO
         let filtro = document.getElementById("buscar")?.value?.toLowerCase() || "";
 
         let filtrados = this.arrayProdutos.filter(item =>
@@ -187,19 +178,16 @@ class Produto {
 
 var produtos = new Produto();
 
-// EXPORTAR CSV
 document.getElementById('exportCSV').addEventListener('click', function () {
     var table2excel = new Table2Excel();
     table2excel.export(document.getElementById('export'));
 });
 
-// LIMPAR BUSCA
 document.getElementById("limparBusca")?.addEventListener("click", () => {
     document.getElementById("buscar").value = "";
     produtos.listaTabela();
 });
 
-// LIMPAR TABELA
 document.getElementById("limparTabela")?.addEventListener("click", () => {
     if (confirm("Tem certeza que deseja limpar toda a tabela?")) {
         produtos.arrayProdutos = [];
@@ -209,7 +197,6 @@ document.getElementById("limparTabela")?.addEventListener("click", () => {
     }
 });
 
-// FILTRAR AO DIGITAR
 document.getElementById("buscar")?.addEventListener("keyup", () => {
     produtos.listaTabela();
 });
